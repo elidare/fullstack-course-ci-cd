@@ -5,3 +5,9 @@ A repo for the Helsinki fullstack course, chapter 6, exercises 21-23 https://cou
 I acknowledge the use of OpenAI. (2026). ChatGPT (v4) [Large language model]. https://openai.com to generate materials:
 
 - Vite and Express setup https://chatgpt.com/share/6afb7132-e9a8-83eb-958e-73b684fd79b9
+
+// TODO
+- protect main
+- e2e tests
+- actions: build, 3 tests, deploy, notify
+- render

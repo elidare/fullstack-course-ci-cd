@@ -3,12 +3,12 @@ const { loginWith, createBlog } = require('./helper')
 
 const testUser1 = {
   name: 'Test User',
-  username: 'test_user',
+  username: 'e2e_test_user',
   password: 'pswd'
 }
 const testUser2 = {
   name: 'Test User 2',
-  username: 'test_user_2',
+  username: 'e2e_test_user_2',
   password: 'pswd2'
 }
 const newBlog = {
@@ -53,12 +53,12 @@ describe('Blog app', () => {
     const passwordInput = page.getByLabel('Password')
     const loginButton = page.getByRole('button', { name: 'Log in' })
 
-    await expect.soft(header).toBeVisible();
-    await expect.soft(usernameInput).toBeVisible();
-    await expect.soft(passwordInput).toBeVisible();
-    await expect.soft(loginButton).toBeVisible();
+    await expect.soft(header).toBeVisible()
+    await expect.soft(usernameInput).toBeVisible()
+    await expect.soft(passwordInput).toBeVisible()
+    await expect.soft(loginButton).toBeVisible()
 
-    expect(test.info().errors).toHaveLength(0);
+    expect(test.info().errors).toHaveLength(0)
   })
 
   describe('Login', () => {
@@ -88,11 +88,11 @@ describe('Blog app', () => {
     test('a blog can be liked', async ({ page }) => {
       await createBlog(page, newBlog)
       await page.getByRole('button', { name: 'View' }).click()
-      await expect(page.getByText('Likes 0')).toBeVisible();
+      await expect(page.getByText('Likes 0')).toBeVisible()
 
       await page.getByRole('button', { name: 'Like' }).click()
 
-      await expect(page.getByText('Likes 1')).toBeVisible();
+      await expect(page.getByText('Likes 1')).toBeVisible()
     })
 
     test('a blog can be deleted by the added user', async ({ page }) => {

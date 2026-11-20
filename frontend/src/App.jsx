@@ -11,22 +11,23 @@ const App = () => {
   const [notification, setNotification] = useState({ message: null, type: null })
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
-  const [user, setUser] = useState(null)
   const [blogFromVisible, setBlogFromVisible] = useState(false)
+  const [user, setUser] = useState(() => {
+    const loggedUserJSON = window.localStorage.getItem('loggedBlogappUser')
+
+    if (loggedUserJSON) {
+      const user = JSON.parse(loggedUserJSON)
+      blogService.setToken(user.token)
+      return user
+    }
+
+    return null
+  })
 
   useEffect(() => {
     blogService.getAllBlogs().then(blogs =>
       setBlogs(blogs)
     )
-  }, [])
-
-  useEffect(() => {
-    const loggedUserJSON = window.localStorage.getItem('loggedBlogsappUser')
-    if (loggedUserJSON) {
-      const user = JSON.parse(loggedUserJSON)
-      setUser(user)
-      blogService.setToken(user.token)
-    }
   }, [])
 
   const handleLogin = async (event) => {

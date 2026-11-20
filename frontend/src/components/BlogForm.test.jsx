@@ -13,7 +13,7 @@ describe('<BlogForm />', () => {
     const user = userEvent.setup()
 
     render(<BlogForm handleSubmit={createBlog} />)
-    
+
     const inputTitle = screen.getByLabelText('Title')
     const inputAuthor = screen.getByLabelText('Author')
     const inputUrl = screen.getByLabelText('Url')

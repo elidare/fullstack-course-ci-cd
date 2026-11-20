@@ -7,7 +7,6 @@
     "dev": "vite",
     "build": "vite build",
     "test": "vitest run",
-    "lint": "eslint .",
     "preview": "vite preview"
   },
   "dependencies": {

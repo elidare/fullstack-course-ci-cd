@@ -23,10 +23,10 @@ describe('<Blog />', () => {
     expect(element).toBeVisible()
 
     const urlElement = screen.queryByText(`${blog.url}`)
-    expect(urlElement).toBeNull()
+    expect(urlElement).not.toBeVisible()
 
     const likesElement = screen.queryByText(`Likes ${blog.likes}`)
-    expect(likesElement).toBeNull()
+    expect(likesElement).not.toBeVisible()
   })
 
   test('Renders blog in open status', async () => {
