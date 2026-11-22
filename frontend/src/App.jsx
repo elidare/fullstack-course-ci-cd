@@ -13,15 +13,9 @@ const App = () => {
   const [password, setPassword] = useState('')
   const [blogFromVisible, setBlogFromVisible] = useState(false)
   const [user, setUser] = useState(() => {
-    const loggedUserJSON = window.localStorage.getItem('loggedBlogappUser')
+    const loggedUserJSON = window.localStorage.getItem('loggedBlogsappUser')
 
-    if (loggedUserJSON) {
-      const user = JSON.parse(loggedUserJSON)
-      blogService.setToken(user.token)
-      return user
-    }
-
-    return null
+    return loggedUserJSON ? JSON.parse(loggedUserJSON) : null
   })
 
   useEffect(() => {
@@ -29,6 +23,10 @@ const App = () => {
       setBlogs(blogs)
     )
   }, [])
+
+  useEffect(() => {
+    blogService.setToken(user?.token ?? null)
+  }, [user])
 
   const handleLogin = async (event) => {
     event.preventDefault()

@@ -8,15 +8,21 @@
   "main": "index.js",
   "scripts": {
     "start": "cross-env NODE_ENV=production node index.js",
+    "start:test": "cross-env NODE_ENV=test node index.js",
+
     "dev": "concurrently \"npm run dev:server\" \"npm run dev:frontend\"",
+
     "dev:server": "cross-env NODE_ENV=development node --watch index.js",
     "dev:frontend": "npm run dev --prefix frontend",
+
     "build": "npm run build --prefix frontend",
+
     "test:server": "cross-env NODE_ENV=test node --test --test-concurrency=1",
     "test:frontend": "npm run test --prefix frontend",
     "test:e2e": "npm run test --prefix e2e",
+
     "lint": "eslint .",
-    "start:test": "cross-env NODE_ENV=test node --watch index.js"
+    "lint:fix": "eslint . --fix"
   },
   "dependencies": {
     "bcrypt": "^6.0.0",
