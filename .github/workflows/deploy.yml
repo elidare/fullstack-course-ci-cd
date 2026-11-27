@@ -20,7 +20,10 @@ jobs:
         with:
           node-version: lts/*
       - name: Install dependencies
-        run: npm install
+        run: |
+          npm install
+          cd frontend
+          npm install
       - name: Check style
         run: npm run lint
       - name: Run npm build
@@ -49,7 +52,10 @@ jobs:
         with:
           node-version: lts/*
       - name: Install dependencies
-        run: npm install
+        run: |
+          npm install
+          cd frontend
+          npm install
       - name: Run frontend tests
         run: npm run test:frontend
 
