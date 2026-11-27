@@ -39,12 +39,18 @@ const blogsWithLikes = [
 
 describe('Blog app', () => {
   beforeEach(async ({ page, request }) => {
-    await request.post('/api/testing/reset')
-    await request.post('/api/users', {
+    /* eslint-disable no-console */
+    console.log('Resetting database')
+    const reset = await request.post('/api/testing/reset')
+    console.log('Database reset:', reset.status())
+
+    console.log('Creating test users')
+    const user = await request.post('/api/users', {
       data: testUser1
     })
-
+    console.log('User created:', user.status())
     await page.goto('/')
+    /* eslint-enable no-console */
   })
 
   test('Login form is shown', async ({ page }) => {
