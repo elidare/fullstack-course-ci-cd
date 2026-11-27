@@ -32,6 +32,10 @@ jobs:
   test_backend:
     needs: [build]
     runs-on: ubuntu-latest
+    env:
+      NODE_ENV: test
+      TEST_MONGODB_URI: ${{ secrets.TEST_MONGODB_URI }}
+      SECRET: ${{ secrets.SECRET }}
     steps:
       - uses: actions/checkout@v6
       - uses: actions/setup-node@v6
@@ -41,7 +45,6 @@ jobs:
         run: npm install
       - name: Run backend tests
         run: npm run test:server
-
 
   test_frontend:
     needs: [build]
@@ -70,7 +73,9 @@ jobs:
       - name: Install dependencies
         run: npm install
       - name: Install Playwright Browsers
-        run: npx playwright install --with-deps
+        run: |
+          cd e2e
+          npx playwright install --with-deps
       - name: Run Playwright tests
         run: npm run test:e2e
       - uses: actions/upload-artifact@v6
